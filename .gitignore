@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pth
+data/
+mlruns/
+*.db
+.env
+reports/
+models/
+.ipynb_checkpoints/
