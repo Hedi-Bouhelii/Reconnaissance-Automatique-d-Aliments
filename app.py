@@ -41,9 +41,8 @@ FOOD10_DIR = DATA_DIR / 'food10'
 MODELS_DIR = Path('./models')
 
 SELECTED_CLASSES = [
-    'pizza', 'hamburger', 'hot_dog', 'french_fries',
-    'ice_cream', 'omelette', 'pancakes', 'ramen', 'steak',
-    'fried_rice'
+    'pizza', 'sushi', 'hamburger', 'hot_dog', 'french_fries',
+    'ice_cream', 'omelette', 'pancakes', 'ramen', 'steak'
 ]
 
 CLASS_TO_IDX = {cls: idx for idx, cls in enumerate(SELECTED_CLASSES)}
@@ -79,23 +78,21 @@ model = None
 transform = None
 
 def load_model():
-    """Load the trained model"""
     global model, transform
-    
     try:
-        # Model path
+        import torchvision.models as models
         model_path = MODELS_DIR / 'best_model.pth'
         
         if not model_path.exists():
             raise FileNotFoundError(f"Model not found at {model_path}")
         
-        # Initialize model
-        model = FoodClassifier(num_classes=len(SELECTED_CLASSES), pretrained=False)
-        model.load_state_dict(torch.load(model_path, map_location=device))
+        # Colab saved a plain ResNet18 with simple fc layer
+        model = models.resnet18(weights=None)
+        model.fc = nn.Linear(512, len(SELECTED_CLASSES))
+        model.load_state_dict(torch.load(model_path, map_location=device, weights_only=False))
         model = model.to(device)
         model.eval()
         
-        # Setup transforms
         transform = transforms.Compose([
             transforms.Resize((IMG_SIZE, IMG_SIZE)),
             transforms.ToTensor(),
