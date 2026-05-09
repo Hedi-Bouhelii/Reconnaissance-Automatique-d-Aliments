@@ -1,0 +1,277 @@
+.analysis-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #2d9b4e;
+  cursor: pointer;
+  margin-bottom: 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: translateX(-4px);
+}
+
+.analysis-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+}
+
+.analysis-image-section {
+  position: relative;
+}
+
+.analysis-image {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+.timestamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.analysis-results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.analysis-header {
+  text-align: left;
+}
+
+.analysis-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d9b4e;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analysis-header > p {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.food-name {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 8px 0 16px 0;
+}
+
+.confidence-badge {
+  display: inline-block;
+  background: #c8e6c9;
+  color: #1b5e20;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.predictions-list {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.predictions-list h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.predictions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prediction-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.prediction-item:hover {
+  background: #f0f0f0;
+}
+
+.prediction-rank {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d9b4e;
+  text-align: center;
+}
+
+.prediction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prediction-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: capitalize;
+}
+
+.confidence-bar {
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2d9b4e, #66bb6a);
+  transition: width 0.5s ease;
+}
+
+.prediction-percentage {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2d9b4e;
+  text-align: right;
+}
+
+.nutrition-info {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.nutrition-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.nutrition-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.nutrition-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.nutrition-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d9b4e;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-save {
+  background: #e8f5e9;
+  color: #2d9b4e;
+}
+
+.btn-save:hover {
+  background: #c8e6c9;
+  transform: translateY(-2px);
+}
+
+.btn-share {
+  background: #2d9b4e;
+  color: white;
+}
+
+.btn-share:hover {
+  background: #1b5e20;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 968px) {
+  .analysis-content {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .food-name {
+    font-size: 24px;
+  }
+
+  .analysis-results-section {
+    gap: 16px;
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-grid {
+    grid-template-columns: 1fr;
+  }
+}
