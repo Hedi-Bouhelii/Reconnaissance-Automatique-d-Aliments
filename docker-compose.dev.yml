@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # Development Backend API Service with Hot Reload
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: food-ai-api-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    networks:
+      - food-ai-network
+    command: bash -c "pip install watchdog[watchmedo] && watchmedo auto-restart -d . -p '*.py' -- python app.py"
+    restart: unless-stopped
+
+  # Development Frontend Service with Hot Reload
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: food-ai-frontend-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - food-ai-network
+    command: npm run dev -- --host 0.0.0.0
+    restart: unless-stopped
+
+networks:
+  food-ai-network:
+    driver: bridge
